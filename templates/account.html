@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <p>Name: {{ current_user.name }}</p>
+    <p>Email: {{ current_user.email }}</p>
+
+<form method="POST" 
+action="{{ url_for('account') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.name.label(class="form-label")}}
+         {{ form.name(class="form-control") }}
+
+        {{ form.email.label(class="form-label")}}
+        {{ form.email (class="form-control")}}
+        
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+
+{% endblock content %}

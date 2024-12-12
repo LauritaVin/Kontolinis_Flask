@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for entry in all_entries%}
+        <p>Person: {{entry.user.name}}</p>
+        <p>{{entry.type_label}}: {{ entry.sum }}</p>
+        <p>Date: {{ datetime.strftime(entry.date, '%Y-%m-%d %H:%M') }}</p>
+        {% if entry.user_id == current_user.id %}
+                <a href="{{ url_for('delete', id=entry.id) }}">Delete</a>
+                <a href="{{ url_for('update', id=entry.id) }}">Update</a>
+            {% endif %}
+            <hr>
+        {% endfor %}
+{% endblock content %}
